@@ -361,7 +361,7 @@ static void bloquear (lista_BCPs * lista){ //se le pasa como parametros lista_do
   	p_proc_actual->estado=BLOQUEADO;
 	nivel=fijar_nivel_int(NIVEL_3);//Aquí ihnibir de interrupciones
 	eliminar_elem(&lista_listos,p_proc_actual);
-	insertar_ultimo(&lista_dormidos,p_proc_actual);
+	insertar_ultimo(&lista,p_proc_actual);
 	fijar_nivel_int(nivel);//Deshinibirlo
 	
 	/* Realizar cambio de contexto */
@@ -374,7 +374,7 @@ static void desbloquear (BCP * proc, lista_BCPs * lista){
 	
   	proc->estado=LISTO;
 	nivel=fijar_nivel_int(NIVEL_3);//Aquí ihnibir de interrupciones
-	eliminar_elem(&lista_dormidos,proc);
+	eliminar_elem(&lista,proc);
 	insertar_ultimo(&lista_listos,proc);
 	fijar_nivel_int(nivel);//Deshinibirlo
 	
